@@ -1,5 +1,7 @@
 package com.eime.blog.payload;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.util.Set;
@@ -8,8 +10,16 @@ import java.util.Set;
 public class PostDto {
 
     private Long id;
+
+    @NotEmpty
+    @Size(min=2, message = "Post title should have at leats 2 characters")
     private String title;
+
+    @NotEmpty
+    @Size(min=10, message = "Post title should have at leats 10 characters")
     private String description;
+
+    @NotEmpty
     private String content;
     private Set<CommentDto> comments;
 
